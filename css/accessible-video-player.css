@@ -1,0 +1,330 @@
+/**
+ * accessible-video-player.css
+ *
+ * CSS styles to accompany accessible-video-player.js
+ *
+ * Repository URL: https://github.com/svinkle/accessible-video-player
+ *
+ * @author: Scott Vinkle <scott.vinkle@shopify.com>
+ * @version: 0.7.5
+ */
+
+/* Global */
+.accessible-video-player {
+  line-height: 0;
+  position: relative;
+}
+
+.accessible-video-player * {
+  box-sizing: border-box;
+}
+
+.accessible-video-player__video {
+  border: 0;
+}
+
+.accessible-video-player__icon {
+  fill: white;
+}
+
+/* Containers */
+.accessible-video-player__controls-container {
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3px;
+}
+
+.accessible-video-player__control-container,
+.accessible-video-player__icon-container,
+.accessible-video-player__track-list-label {
+  align-items: center;
+  display: flex;
+  flex: 0 auto;
+}
+
+.accessible-video-player__timeline-container {
+  flex: 1 auto;
+  position: relative;
+}
+
+.accessible-video-player__timeline-wrapper {
+  display: flex;
+  flex: 1 auto;
+}
+
+.accessible-video-player__volume-container {
+  padding-left: 10px;
+}
+
+/* Buttons */
+.accessible-video-player__btn {
+  background: transparent;
+  border: solid transparent 1px;
+  border-radius: 0;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  padding: 10px;
+}
+
+.accessible-video-player__btn:hover,
+.accessible-video-player__btn:focus {
+  background: transparent;
+  border: solid transparent 1px;
+  padding: 10px;
+  transition: none;
+}
+
+/* Volume */
+.accessible-video-player__volume {
+  max-width: 50px;
+}
+
+/* Timeline */
+.accessible-video-player__timeline {
+  display: flex;
+  flex: 1 auto;
+  position: relative;
+  z-index: 6;
+}
+
+.accessible-video-player__timeline-output {
+  display: inline-block;
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+.accessible-video-player__timeline-tooltip {
+  bottom: 100%;
+  background-color: black;
+  display: none;
+  font-size: 14px;
+  left: 0;
+  padding: 15px 10px;
+  position: absolute;
+  z-index: 5;
+}
+
+.accessible-video-player__timeline-tooltip--active {
+  display: block;
+}
+
+.accessible-video-player__timeline-tooltip:before {
+  content: '';
+  border: transparent solid 10px;
+  border-top: black solid 10px;
+  left: 50%;
+  margin-left: -10px;
+  position: absolute;
+  top: 100%;
+}
+
+.flex .accessible-video-player__rng {
+  -webkit-appearance: none;
+  padding: 0;
+}
+
+.flex .accessible-video-player__rng::-webkit-slider-runnable-track {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  animate: .2s;
+  background: grey;
+  position: relative;
+  z-index: 3;
+}
+
+.flex .accessible-video-player__rng::-webkit-slider-thumb {
+  border: 1px solid transparent;
+  height: 24px;
+  width: 24px;
+  border-radius: 100%;
+  background: white;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -9px;
+  position: relative;
+  z-index: 4;
+}
+
+.flex .accessible-video-player__rng::-moz-range-track {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  animate: .2s;
+  background: grey;
+  position: relative;
+}
+
+.flex .accessible-video-player__rng::-moz-range-thumb {
+  border: 1px solid transparent;
+  height: 24px;
+  width: 24px;
+  border-radius: 100%;
+  background: white;
+  cursor: pointer;
+  margin-top: -9px;
+  position: relative;
+  z-index: 4;
+}
+
+.flex .accessible-video-player__rng::-ms-track {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  animate: .2s;
+  background: transparent;
+  color: transparent;
+  border-color: transparent;
+  border-width: 8px 0;
+  position: relative;
+  z-index: 3;
+}
+
+.flex .accessible-video-player__rng::-ms-fill-lower {
+  background: grey;
+}
+
+.flex .accessible-video-player__rng::-ms-fill-upper {
+  background: grey;
+}
+
+.flex .accessible-video-player__rng::-ms-thumb {
+  border: 1px solid transparent;
+  height: 18px;
+  width: 18px;
+  border-radius: 100%;
+  background: white;
+  margin-top: 1px;
+  position: relative;
+  z-index: 4;
+}
+
+/* Focus styles */
+.accessible-video-player:focus,
+.accessible-video-player__btn:focus,
+.accessible-video-player__track-list-label--active,
+.accessible-video-player__rng:focus {
+  outline: 3px solid #00adef;
+}
+
+.flex .accessible-video-player__rng:focus::-webkit-slider-thumb {
+  outline: 3px solid #00adef;
+}
+
+.flex .accessible-video-player__rng:focus::-moz-range-thumb {
+  outline: 3px solid #00adef;
+}
+
+.flex .accessible-video-player__rng:focus::-ms-thumb {
+  outline: 3px solid #00adef;
+}
+
+/* Tracks (closed caption) */
+.accessible-video-player__tracks-container {
+  position: relative;
+}
+
+.accessible-video-player__track-list {
+  background-color: #222;
+  bottom: 100%;
+  display: none;
+  left: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  min-width: 150px;
+  z-index: 999;
+}
+
+@media only screen and (min-width: 511px) {
+  .accessible-video-player__track-list {
+    left: auto;
+    right: 0;
+  }
+}
+
+.accessible-video-player__track-list--active {
+  display: block;
+}
+
+.accessible-video-player__track-list-label {
+  cursor: pointer;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.accessible-video-player__track-list-input {
+  margin: 0 5px 0 0;
+}
+
+/* Fullscreen */
+.accessible-video-player--fullscreen {
+  align-items: center;
+  background-color: black;
+  display: flex;
+  height: 100%;
+  margin-bottom: 0 !important;
+  max-width: 100% !important;
+  width: 100%;
+}
+
+.accessible-video-player--fullscreen
+  .accessible-video-player__controls-container {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+/* No flex */
+.no-flex .accessible-video-player__control-container,
+.no-flex .accessible-video-player__icon-container,
+.no-flex .accessible-video-player__track-list-label,
+.no-flex .accessible-video-player__volume {
+  float: left;
+}
+
+.no-flex .accessible-video-player__mute-btn {
+  float: right;
+}
+
+.no-flex .accessible-video-player__timeline-wrapper {
+  display: inline-block;
+}
+
+.no-flex .accessible-video-player__timeline-tooltip {
+  bottom: 100%;
+}
+
+/* Helper */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: ' '; /* 1 */
+  display: table; /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}

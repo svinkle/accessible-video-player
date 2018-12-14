@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Scott Vinkle -- Lead developer -- @svinkle
+
+# THANKS
+
+    Vimeo API devs…
+
+# TECHNOLOGY COLOPHON
+
+    CSS, HTML, JavaScript
+    Apache Server Configs, Normalize.css

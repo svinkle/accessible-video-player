@@ -1,0 +1,12 @@
+{
+  "short_name": "Accessible VideoPlayer",
+  "name": "Accessible VideoPlayer",
+  "icons": [{
+    "src": "icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": "/",
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}

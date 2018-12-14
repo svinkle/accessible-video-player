@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Accessible Video Player</title>
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#222222" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="icon" sizes="192x192" href="icon.png" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/accessible-video-player.css" />
+    <link rel="stylesheet" href="css/prism.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,900|Raleway:400,700|Source+Code+Pro"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="/">
+          <span role="img" aria-hidden="true">▶️</span>
+          Accessible Video Player
+        </a>
+      </h1>
+    </header>
+    <main class="main" id="main" role="main">
+      <p>
+        <strong>Accessible Video Player</strong>
+        creates keyboard and assistive technology friendly videos from
+        <a href="https://vimeo.com/">Vimeo</a>
+        .
+      </p>
+
+      <p>
+        Accessible Video Player uses the
+        <a href="https://github.com/vimeo/player.js">Vimeo JS API</a>
+        to manipulate each embedded video. Controls are generated on the fly, a
+        set for each embedded Vimeo player found on a page.
+      </p>
+
+      <iframe
+        src="https://player.vimeo.com/video/273285552"
+        width="640"
+        height="360"
+      ></iframe>
+
+      <h2>Features</h2>
+
+      <ul>
+        <li>Play/pause toggle button</li>
+        <li>Timeline slider</li>
+        <li>Volume slider</li>
+        <li>Mute button</li>
+        <li>Full screen button</li>
+        <li>View and set closed caption track (if available)</li>
+        <li>Video and controls flex to viewport width</li>
+        <li>Events are announced out loud as they happen</li>
+      </ul>
+
+      <h2>Usage</h2>
+
+      <ol>
+        <li>
+          Include the
+          <a href="https://github.com/vimeo/player.js">Vimeo JS API</a>
+          and
+          <a href="https://momentjs.com/">Moment.js</a>
+          dependencies
+        </li>
+        <li>
+          Include
+          <code>accessible-video-player.js</code>
+          at the bottom of your page:
+        </li>
+      </ol>
+      <pre class="language-markup">
+<code class="language-markup">&lt;script src="https://player.vimeo.com/api/player.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"&gt;&lt;/script&gt;
+&lt;script src="accessible-video-player.js"&gt;&lt;/script&gt;</code>
+      </pre>
+
+      <p>
+        The included script will automatically find any
+        <code>iframe</code>
+        elements on the page with embedded videos from the domain
+        <code>player.vimeo.com</code>
+        and attaches the controls on the fly. No other configuration is
+        required!
+      </p>
+
+      <h2>Try your own video…</h2>
+
+      <form id="load-video-form">
+        <label for="video-id">
+          Enter a Vimeo ID:
+          <input id="video-id" type="number" placeholder="123456789" required />
+        </label>
+        <button id="load-video">Load Video</button>
+      </form>
+    </main>
+
+    <footer>
+      <h2>Links</h2>
+      <ul>
+        <li>
+          <a href="https://twitter.com/svinkle">
+            Made with
+            <span role="img" aria-label="love">♥</span>
+            by @svinkle
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/svinkle/accessible-video-player">
+            Source on GitHub
+          </a>
+        </li>
+      </ul>
+    </footer>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"></script>
+    <script src="js/accessible-video-player.js"></script>
+    <script src="js/prism.js"></script>
+
+    <script>
+      (function() {
+        var video = null,
+          videoCounter = 0,
+          videoId = document.querySelector('#video-id'),
+          form = document.querySelector('#load-video-form'),
+          loadBtn = document.querySelector('#load-video');
+
+        // Create the embed elements
+        var createEmbed = function(ev) {
+          ev.preventDefault();
+
+          // Create the iframe element
+          video = document.createElement('iframe');
+
+          // Set sttributes of the video
+          video.src = 'https://player.vimeo.com/video/' + videoId.value;
+          video.id = 'accessible-video-player-' + videoCounter;
+          video.width = 640;
+          video.height = 360;
+          video.setAttribute('data-accessible', true);
+
+          // Insert the video
+          form.parentNode.insertBefore(video, form);
+
+          // Load accessible controls
+          new accessibleVideoPlayer(video.id);
+
+          // Set focus on the new embedded video container
+          video.parentNode.focus();
+
+          // Reset the form
+          form.reset();
+
+          // Increment the id counter
+          videoCounter++;
+        };
+
+        loadBtn.addEventListener('click', createEmbed, false);
+      })();
+    </script>
+  </body>
+</html>
