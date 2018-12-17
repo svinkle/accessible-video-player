@@ -1,6 +1,6 @@
 {
-  "short_name": "Accessible VideoPlayer",
-  "name": "Accessible VideoPlayer",
+  "short_name": "Accessible Video Player",
+  "name": "Accessible Video Player",
   "icons": [{
     "src": "icon.png",
     "type": "image/png",
