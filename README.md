@@ -52,3 +52,7 @@ If you need to manually create a video player you can do so by the following.
   var myVideo = new accessibleVideoPlayer('myVideo');
 </script>
 ```
+
+## License
+
+This project and its source code is licensed under the [MIT](LICENSE.txt) license.
