@@ -1,5 +1,3 @@
-The MIT License (MIT)
-
 Copyright (c) Accessible Video Player – Scott Vinkle <scott.vinkle@shopify.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
